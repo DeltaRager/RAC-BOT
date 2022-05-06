@@ -1,9 +1,9 @@
-import { readdirSync } from 'node:fs';
-import { Client, Intents } from 'discord.js';
+const fs = require('node:fs');
+const { Client, Intents } = require('discord.js');
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
-const eventFiles = readdirSync('./events').filter(file => file.endsWith('.js'));
+const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 
 for (const file of eventFiles) {
 	const event = require(`./events/${file}`);

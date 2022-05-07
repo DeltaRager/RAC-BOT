@@ -27,15 +27,15 @@ async function makeRequest(playerKey, message) {
     const options = {
         method: 'get',
         headers: { 'x-api-key': config.KEY },
-        url: `https://apis.roblox.com/datastores/v1/universes/2931035894/standard-datastores/datastore/entries/entry?datastoreName=PlayerData_085&entryKey=Player_${playerKey}`
+        url: `https://apis.roblox.com/datastores/v1/universes/2931035894/standard-datastores/datastore/entries/entry?datastoreName=PlayerData_100&entryKey=Player_${playerKey}`
     }
 	try {
 		let res = await axios(options)
 		let perstring = ""
-		for(let i = 0; i < parseInt(res.data.Data.AverageAccuracy)/10 - 1;i++) {
+		for(let i = 0; i < Math.abs((parseInt(res.data.Data.Experience)/(parseInt(res.data.Data.Level) * 100))) * 10 - 1;i++) {
 			perstring = perstring + ":white_large_square:"
 		}
-		for(let i = 0; i < 10 - parseInt(res.data.Data.AverageAccuracy)/10;i++) {
+		for(let i = 0; i < 10 - Math.abs((parseInt(res.data.Data.Experience)/(parseInt(res.data.Data.Level) * 100))) * 10;i++) {
 			perstring = perstring + ":white_square_button:"
 		}
 
@@ -97,14 +97,13 @@ async function makeRequest(playerKey, message) {
 		// 	}
 		// }).setBackgroundColor('transparent');
 		// const charUrl = await chart.getShortUrl();
-		
 		noblox.getPlayerInfo({userId: parseInt(playerKey)}).then(function(playerData){
 			const exampleEmbed = new MessageEmbed()
 			.setColor('#0dffb2')
 			.setTitle(res.data.Data.Rank)
 			.setAuthor({ name: playerData.displayName, iconURL: ranks[res.data.Data.Rank], url: `https://www.roblox.com/users/${playerKey}/profile`})
 			.addFields(
-				{ name: '‎', value: `Username: **${playerData.displayName}**\nElo: **${res.data.Data.Elo}**\nAccuracy: **${res.data.Data.AverageAccuracy}%**\n`}
+				{ name: '‎', value: `Username: **${playerData.displayName}**\nElo: **${res.data.Data.Elo}**\nAccuracy: **${res.data.Data.AverageAccuracy}%**\n\nLevel: **${res.data.Data.Level}\n[${Math.round((parseInt(res.data.Data.Experience)/(parseInt(res.data.Data.Level) * 100)) * 10000)/10000 * 100}%]** ${perstring}`}
 			)
 			.setThumbnail(ranks[res.data.Data.Rank])
 			// .setImage(charUrl)

@@ -24,7 +24,7 @@ async function makeRequest(playerKey, message, client) {
 			delete talkedRecently[message.author.id]
 		}, 15000);
 	}
-	if(playerKey == '>!getprofile') {
+	if(playerKey == `${config.PREFIX}getprofile`) {
 		await axios
 		.get(`https://verify.eryn.io/api/user/${message.author.id}`)
 		.then(res => {

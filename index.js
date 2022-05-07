@@ -6,7 +6,7 @@ const path = require('path');
 
 const dirPath = path.resolve(__dirname, './src/events');
 
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_WEBHOOKS] });
 
 const eventFiles = fs.readdirSync(dirPath).filter(file => file.endsWith('.js'));
 

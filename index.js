@@ -1,5 +1,6 @@
 const fs = require('fs')
 const { Client, Intents } = require('discord.js');
+const config = require('./src/config.json')
 
 const path = require('path');
 
@@ -18,4 +19,4 @@ for (const file of eventFiles) {
 	}
 }
 
-client.login(process.env.TOKEN);
+client.login(config.TOKEN);

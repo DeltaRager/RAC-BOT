@@ -43,12 +43,12 @@ async function makeRequest(playerKey, message) {
 		let updateDateNew = dateObj.toLocaleString()
 
 
-		let accArray = []
-		let labelArray = []
-		for(let i = 0;i < 5;i++) {
-			accArray.push(res.data.Data.PreviousGames.at(i).at(0))
-			labelArray.push(res.data.Data.PreviousGames.at(i).at(2))
-		}
+		// let accArray = []
+		// let labelArray = []
+		// for(let i = 0;i < 5;i++) {
+		// 	accArray.push(res.data.Data.PreviousGames.at(i).at(0))
+		// 	labelArray.push(res.data.Data.PreviousGames.at(i).at(2))
+		// }
 		
 		// chart.setConfig({
 		// 	type:'line',
@@ -103,7 +103,7 @@ async function makeRequest(playerKey, message) {
 			.setTitle(res.data.Data.Rank)
 			.setAuthor({ name: playerData.displayName, iconURL: ranks[res.data.Data.Rank], url: `https://www.roblox.com/users/${playerKey}/profile`})
 			.addFields(
-				{ name: '‎', value: `Username: **${playerData.displayName}**\nElo: **${res.data.Data.Elo}**\nAccuracy: **${res.data.Data.AverageAccuracy}%**\n\nLevel: **${res.data.Data.Level}\n[${Math.round((parseInt(res.data.Data.Experience)/(parseInt(res.data.Data.Level) * 100)) * 10000)/10000 * 100}%]** ${perstring}`}
+				{ name: '‎', value: `Username: **${playerData.displayName}**\nElo: **${res.data.Data.Elo}**\nAccuracy: **${res.data.Data.AverageAccuracy}%**\n\nLevel: **${res.data.Data.Level}** | XP: **${res.data.Data.Experience}/${res.data.Data.Level * 100}**\n**[${Math.round((parseInt(res.data.Data.Experience)/(parseInt(res.data.Data.Level) * 100)) * 10000)/10000 * 100}%]** ${perstring}`}
 			)
 			.setThumbnail(ranks[res.data.Data.Rank])
 			// .setImage(charUrl)

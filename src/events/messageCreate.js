@@ -22,7 +22,8 @@ module.exports = {
 		const msg = message.content.split(" ")
         
         const commandtext = msg[0]
-        const args = msg.pop()
+        msg.shift()
+        const args = msg
         const command = client.commands.get(commandtext);
         if (!command) return;
         try {

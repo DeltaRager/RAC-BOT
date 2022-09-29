@@ -51,7 +51,7 @@ async function makeRequest(playerKey, message) {
     const options = {
         method: 'get',
         headers: { 'x-api-key': config.KEY },
-        url: `https://apis.roblox.com/datastores/v1/universes/2931035894/standard-datastores/datastore/entries/entry?datastoreName=ChallengeS1_01105&entryKey=${playerKey}`
+        url: `https://apis.roblox.com/datastores/v1/universes/2931035894/standard-datastores/datastore/entries/entry?datastoreName=ChallengeS1_01110&entryKey=${playerKey}`
     }
 	try {
 		let res = await axios(options)

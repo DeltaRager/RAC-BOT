@@ -1,1 +1,1 @@
-Official bot for IEEEComSoc VIT Chennai dicord server.
+
